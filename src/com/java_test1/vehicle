@@ -50,8 +50,8 @@ class ServiceVehicle extends Vehicle implements ServiceOperations{
 	ServiceVehicle(String service_center_name,String service_category,String owner_name,int vehicle_num,String type){
 		super(owner_name,vehicle_num,type);
 		this.service_center_name=service_center_name;
-		this.service_category=service_center_name;
-	}
+		this.service_category=service_category;
+	
 		
     
 
@@ -71,6 +71,7 @@ class ServiceVehicle extends Vehicle implements ServiceOperations{
 	if(type==null || type==" ") {
 		System.out.println("give proper type name");
 	}
+}
 	@Override
 	
 	public void displayProfile() {
@@ -82,7 +83,7 @@ class ServiceVehicle extends Vehicle implements ServiceOperations{
 	}
 	@Override
 	public void updateServiceCategory(String s) {
-		
+
 			this.service_category=s;
 			
 		
@@ -132,6 +133,7 @@ public class Mainapp {
 			
 			System.out.println("enter option");
 			op=sc.nextInt();
+			sc.nextLine();
 			
 			switch(op) {
 			case 1:
