@@ -1,0 +1,166 @@
+package com.test;
+
+import java.util.Scanner;
+
+abstract class Vehicle { 
+	private String owner_name;
+	private int vehicle_num;
+	private String type;
+	
+	public String getOwner_name() {
+		return owner_name;
+	}
+	public void setOwner_name(String owner_name) {
+		this.owner_name = owner_name;
+	}
+	public int getVehicle_num() {
+		return vehicle_num;
+	}
+	public void setVehicle_num(int vehicle_num) {
+		this.vehicle_num = vehicle_num;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	Vehicle(String owner_name,int vehicle_num,String type){
+		this.owner_name=owner_name;
+		this.vehicle_num=vehicle_num;
+		this.type=type;
+	}
+	
+	public abstract void displayProfile();
+	
+
+}
+
+interface ServiceOperations { 
+	public abstract void updateServiceCategory(String s);
+	public abstract void updateServiceCenter(String s1);
+	
+} 
+
+class ServiceVehicle extends Vehicle implements ServiceOperations{
+	String service_center_name;
+	String service_category;
+	
+	ServiceVehicle(String service_center_name,String service_category,String owner_name,int vehicle_num,String type){
+		super(owner_name,vehicle_num,type);
+		this.service_center_name=service_center_name;
+		this.service_category=service_center_name;
+	}
+		
+    
+
+	if(service_center_name==null || service_center_name==" ") {
+		System.out.println("give proper name input");
+	} 
+	
+	if(service_category==null || service_category==" ") {
+		System.out.println("give proper catgory name");
+	}
+	if(owner_name==null || owner_name==" ") {
+		System.out.println("give proper owner name");
+	}
+	if(vehicle_num==0 || vehicle_num<=0) {
+		System.out.println("give proper vehicle num");
+	}
+	if(type==null || type==" ") {
+		System.out.println("give proper type name");
+	}
+	@Override
+	
+	public void displayProfile() {
+		System.out.println("owner name is :"+getOwner_name());
+		System.out.println("vehicle number :"+getVehicle_num());
+		System.out.println("vehicle type :"+ getType());
+		System.out.println("serivce catgory name: "+service_category);
+		System.out.println("service_center_name:"+service_center_name);
+	}
+	@Override
+	public void updateServiceCategory(String s) {
+//		
+			this.service_category=s;
+			
+		
+		
+	}
+	@Override
+	public void updateServiceCenter(String s1) { 
+//		
+			this.service_center_name=s1;
+	}
+		
+}
+
+
+public class Mainapp { 
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("enter owner name");
+		String name=sc.nextLine();
+		
+		System.out.println("enter vehicle number");
+		int num=sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("enter vehicle type");
+		String vtype=sc.nextLine();
+		
+		System.out.println("enter service center name");
+		String center_name=sc.nextLine();
+		
+		
+		System.out.println("enter sesrvice cat_name");
+		String cat_name=sc.nextLine();
+		
+		Vehicle v=new ServiceVehicle(center_name,cat_name,name,num,vtype);
+		
+		ServiceOperations s=(ServiceOperations) v;
+		int op;
+		
+		do {
+			System.out.println(" Vehicle Service Menu --\r\n"
+					+ "1. Update Service Category\r\n"
+					+ "2. Update Service Center Name\r\n"
+					+ "3. View Vehicle Profile\r\n"
+					+ "4. Exit");   
+			
+			System.out.println("enter option");
+			op=sc.nextInt();
+			
+			switch(op) {
+			case 1:
+				System.out.println("enter service cat name");
+				String new_catname=sc.nextLine();
+				s.updateServiceCategory(new_catname);
+				break; 
+				 
+			case 2:
+				System.out.println("enter service center name");
+				String new_centername=sc.nextLine();
+				s.updateServiceCenter(new_centername);
+				break;
+			
+			case 3:
+				v.displayProfile();
+				break;
+			
+			case 4:
+				System.out.println("thankyou");
+				break;
+			default:
+				System.out.println("invalid option");
+			}
+			
+			
+			
+		}while(op!=4);
+
+	}
+
+} 
