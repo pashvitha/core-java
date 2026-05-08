@@ -82,7 +82,7 @@ class ServiceVehicle extends Vehicle implements ServiceOperations{
 	}
 	@Override
 	public void updateServiceCategory(String s) {
-//		
+		
 			this.service_category=s;
 			
 		
@@ -90,7 +90,7 @@ class ServiceVehicle extends Vehicle implements ServiceOperations{
 	}
 	@Override
 	public void updateServiceCenter(String s1) { 
-//		
+		
 			this.service_center_name=s1;
 	}
 		
